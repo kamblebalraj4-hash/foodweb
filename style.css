@@ -1,0 +1,12 @@
+/* CSS code for styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #e21d1d;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}

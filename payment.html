@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="checkout-page">
+    <div class="checkout-container">
+        <h2>💳 Payment</h2>
+        <form action="/checkout" method="POST" class="checkout-form">
+            <label>Select Payment Method:</label><br>
+<input type="radio" name="payment" value="Card" id="card" onclick="togglePaymentFields()"> Card<br>
+<input type="radio" name="payment" value="QR" id="qr" onclick="togglePaymentFields()"> QR Code<br>
+
+<div id="card-fields" style="display: none;">
+    <input type="text" name="card_number" id="card-number" placeholder="Card Number"><br>
+    <input type="text" name="expiry" id="expiry" placeholder="MM/YY"><br>
+    <input type="text" name="cvv" id="cvv" placeholder="CVV"><br>
+</div>
+
+</body>
+</html>

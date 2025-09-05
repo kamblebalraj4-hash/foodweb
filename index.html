@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Food Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-page">
+    <div class="home-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="home-logo">
+        <h1>Delicious Delivered!</h1>
+        <p>Your cravings are just a few clicks away.</p>
+        <a href="/menu" class="btn">Start Ordering</a>
+    </div>
+</body>
+</html>

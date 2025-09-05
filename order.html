@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="order-page">
+    <div class="summary-container">
+        <h2>🧾 Your Order Summary</h2>
+        <form action="/checkout" method="POST">
+            <input type="submit" value="Proceed to Checkout" class="btn order-btn">
+        </form>
+        <ul class="summary-list">
+            {% for item, price in items %}
+            <li>{{ item }} <span class="price">₹{{ price }}</span></li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <div class="total">Total: ₹{{ total }}</div>
+    </div>
+</body>
+</html>

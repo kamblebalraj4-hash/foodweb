@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="order-page">
+    <div class="summary-container">
+        <h2>Thank You, {{ name }}!</h2>
+        <p>Your order has been placed and will be delivered shortly.</p>
+        <a href="/menu" class="btn">Back to Menu</a>
+    </div>
+</body>
+</html>

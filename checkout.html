@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="checkout-page">
+
+<div class="checkout-container">
+    <form action="/confirm" method="POST" class="checkout-form">
+        <h2>🧾 Final Step: Enter Your Details</h2>
+
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <p><strong>Select Payment Method:</strong></p>
+
+        <label>
+          <input type="radio" name="payment" id="card" value="Card" onclick="togglePaymentFields()"> Card
+        </label>
+        <label>
+          <input type="radio" name="payment" id="qr" value="QR" onclick="togglePaymentFields()"> QR Code
+        </label>
+
+        <!-- Card Fields -->
+        <div id="card-fields" style="display:none; margin-top: 10px;">
+            <input type="text" id="card-number" name="card_number" placeholder="Card Number">
+            <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+            <input type="text" id="cvv" name="cvv" placeholder="CVV">
+        </div>
+
+        <!-- QR Code Image -->
+        <div id="qr-image" style="display:none; text-align:center; margin-top:10px;">
+            <img src="{{ url_for('static', filename='qr-code.png') }}" alt="QR Code for Payment" style="max-width:280px;">
+            <p>📷 Scan the QR Code above to make payment</p>
+        </div>
+
+        <input type="submit" value="Confirm Order" style="margin-top: 20px;">
+    </form>
+</div>
+
+<script>
+    function togglePaymentFields() {
+        const cardRadio = document.getElementById("card");
+        const qrRadio = document.getElementById("qr");
+
+        const cardFields = document.getElementById("card-fields");
+        const qrImage = document.getElementById("qr-image");
+
+        if (cardRadio.checked) {
+            cardFields.style.display = "block";
+            qrImage.style.display = "none";
+        } else if (qrRadio.checked) {
+            cardFields.style.display = "none";
+            qrImage.style.display = "block";
+
+            // Clear card input fields when QR is selected
+            document.getElementById("card-number").value = "";
+            document.getElementById("expiry").value = "";
+            document.getElementById("cvv").value = "";
+        }
+    }
+
+    // Initialize visibility on page load
+    window.onload = togglePaymentFields;
+</script>
+
+</body>
+</html>

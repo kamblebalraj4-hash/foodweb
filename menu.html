@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 class="page-title">Choose Your Food</h1>
+    <form action="/order" method="POST" class="menu-container">
+        {% for category, items in menu.items() %}
+            <h2 class="category">{{ category }}</h2>
+            <div class="menu-grid">
+                {% for item, price in items.items() %}
+                    <div class="menu-card">
+                        <img src="{{ url_for('static', filename=item.lower().replace(' ', '_') + '.png') }}" alt="{{ item }}">
+                        <label>
+                            <input type="checkbox" name="item" value="{{ item }}">
+                            <span>{{ item }}</span>
+                            <span class="price">₹{{ price }}</span>
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Place Order" class="btn order-btn">
+    </form>
+</body>
+</html>
